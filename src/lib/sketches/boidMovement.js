@@ -22,6 +22,9 @@ export default (width, height, options) => {
 
 			// Voor iedere boid in de `boids` array:
 			for (let i = 0; i < boids.length; i++) {
+				// Update de positie en dergelijke van de boid.
+				boids[i].update();
+
 				// Draw deze boid.
 				boids[i].draw();
 			}
@@ -31,6 +34,10 @@ export default (width, height, options) => {
 
 class Boid {
 	constructor(x, y, p5) {
+		// Geef de boid een acceleratie van 0.
+		this.acceleration = p5.createVector(0, 0);
+		// Laat de boid in een willekeurige richting opvliegen.
+		this.velocity = p5.createVector(p5.random(-1, 1), p5.random(-1, 1));
 		// Zet de positie van de boid naar de coordinaten die we hebben gegeven.
 		this.position = p5.createVector(x, y);
 
@@ -44,5 +51,17 @@ class Boid {
 		this.p5.strokeWeight(5);
 		// Zet de stip op de positie van de boid.
 		this.p5.point(this.position.x, this.position.y);
+	}
+
+	update() {
+		// Voeg de versnelling toe aan de snelheid.
+		this.velocity.add(this.acceleration);
+		// Zorg er voor dat de boid niet sneller gaat dan de maximale snelheid.
+		this.velocity.limit(this.maxSpeed);
+
+		// Voeg de snelheid toe aan de positie. Dit zorgt er voor dat de boid de richting op gaat die hij heeft.
+		this.position.add(this.velocity);
+		// We zetten de acceleratie na iedere ronde weer op 0.
+		this.acceleration.mult(0);
 	}
 }

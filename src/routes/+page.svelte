@@ -84,61 +84,42 @@
 
 	<section>
 		<h2>Beweging</h2>
-	</section>
-
-	<!-- <section id="marley-en-haar-vriendjes">
-		<h2>Marley en haar vriendjes</h2>
-		{#if pageWidth > 0}
-			<Boids width={pageWidth} height={400} />
-		{/if}
 		<p>
-			Dit zijn Marley en haar vriendjes. Marley kun je altijd terug vinden in het rood! Op het
-			moment vliegen ze alleen maar in het rond. Soms botsen ze zelfs tegen elkaar aan... Dit moet
-			toch beter kunnen?
+			Om de Marley te laten bewegen hebben we wat meer code nodig. Eerst moet ze weten welke
+			richting ze op moet. Dit doen we met een vector. Een vector is eigenlijk heel simpel. Het
+			heeft een X waarde en een Y waarde.
+			<br />
+			Om aan te geven welke kant ze op moet, moet ze weten hoeveel ze naar links of naar rechts moet
+			(X), en hoeveel naar voren of naar achter (Y).
+			<br />
+			Zo kunnen we dus de richting in een 'snelheidsvector' zetten, die aangeeft hoe snel ze naar welke
+			kant moet bewegen. Ook is het handig om de versnelling te gebruiken om de snelheid te berekenen.
 		</p>
-	</section>
-
-	<section id="separation">
-		<h2>Separation</h2>
-		{#if pageWidth > 0}
-			<Boids width={pageWidth} height={400} separation />
-		{/if}
+		<CodeBlock code="boidMovement1" highlightedLines={[3, 4, 5, 6, 7, 8]} />
 		<p>
-			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam cumque ea alias corporis
-			illum, fuga nesciunt ipsa voluptatem in iure quos. Iusto cum accusamus, eaque recusandae
-			expedita sit eum nostrum! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab
-			necessitatibus aliquid ratione dolores voluptatibus voluptates. Voluptatem quisquam, deserunt
-			obcaecati ab ratione sit quod, similique iure saepe eius aliquam a excepturi?
+			Vervolgens moeten we deze informatie gebruiken om de snelheid van de boid te veranderen. Dit
+			doen we met de volgende code:
 		</p>
-	</section>
-
-	<section id="alignment">
-		<h2>Alignment</h2>
-		{#if pageWidth > 0}
-			<Boids width={pageWidth} height={400} separation alignment />
-		{/if}
+		<CodeBlock
+			code="boidMovement2"
+			highlightedLines={[5, 6, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26]}
+		/>
+		<Sketch width={pageWidth} height={400} sketchName="boidMovement" />
 		<p>
-			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam cumque ea alias corporis
-			illum, fuga nesciunt ipsa voluptatem in iure quos. Iusto cum accusamus, eaque recusandae
-			expedita sit eum nostrum! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab
-			necessitatibus aliquid ratione dolores voluptatibus voluptates. Voluptatem quisquam, deserunt
-			obcaecati ab ratione sit quod, similique iure saepe eius aliquam a excepturi?
+			Top! Nu bewegen ze.
+			<br />
+			We zitten alleen nog met een probleem. Als ze weg gaan van het scherm komen ze nooit meer terug.
+			Hier kunnen we ook wat aan doen.
 		</p>
-	</section>
-
-	<section id="cohesion">
-		<h2>Cohesion</h2>
-		{#if pageWidth > 0}
-			<Boids width={pageWidth} height={400} separation alignment cohesion />
-		{/if}
+		<CodeBlock
+			code="borderWrap"
+			highlightedLines={[7, 8, 18, 19, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]}
+		/>
 		<p>
-			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam cumque ea alias corporis
-			illum, fuga nesciunt ipsa voluptatem in iure quos. Iusto cum accusamus, eaque recusandae
-			expedita sit eum nostrum! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab
-			necessitatibus aliquid ratione dolores voluptatibus voluptates. Voluptatem quisquam, deserunt
-			obcaecati ab ratione sit quod, similique iure saepe eius aliquam a excepturi?
+			Als de boid over de rand gaat, zetten we de positie op de plek van de tegenovergestelde rand.
 		</p>
-	</section> -->
+		<Sketch width={pageWidth} height={400} sketchName="boidBorderWrapping" />
+	</section>
 </article>
 
 <style>
