@@ -119,6 +119,20 @@
 			Als de boid over de rand gaat, zetten we de positie op de plek van de tegenovergestelde rand.
 		</p>
 		<Sketch width={pageWidth} height={400} sketchName="boidBorderWrapping" />
+		<p>
+			Nu we toch bezig zijn met de kleine dingetjes verbeteren, kunnen we net zo goed eventjes de
+			boid er wat beter uit laten zien!
+			<br />
+			Laten we er een driehoekje van maken, zodat je kunt zien welke kant hij op vliegt aan de vorm.
+			<br />
+			Hievoor hebben we eerst de hoek nodig waarop het driehoekje getekend moet worden. Deze hoek noemen
+			we `theta`.
+		</p>
+		<CodeBlock
+			code="betterBoidDraw"
+			highlightedLines={[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]}
+		/>
+		<Sketch width={pageWidth} height={400} sketchName="betterBoidDraw" />
 	</section>
 </article>
 
