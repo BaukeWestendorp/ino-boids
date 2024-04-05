@@ -22,13 +22,13 @@ h1 {
 
 .hljs {
 	background: #f0f0f0f0 !important;
-	border-radius: 6px;
 }
 
-.inline-code {
+code.inline {
 	background: #f0f0f0f0 !important;
 	border-radius: 6px;
-	padding: 4px;
+	padding: 4px 6px;
+	color: #d73a49;
 }
 
 a {
