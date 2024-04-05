@@ -1,4 +1,4 @@
-export function createSketch(width, height, enableSeperation, enableAlignment, enableCoheseion) {
+export default (width, height, options) => {
 	return (p5) => {
 		// Eerst maken we een lege lijst met alle vogels (ookwel boids in het algoritme).
 		const flock = [];
@@ -13,9 +13,9 @@ export function createSketch(width, height, enableSeperation, enableAlignment, e
 					p5.width / 2,
 					p5.height / 2,
 					p5,
-					enableSeperation,
-					enableAlignment,
-					enableCoheseion
+					options.separation,
+					options.alignment,
+					options.cohesion
 				);
 				flock.push(boid);
 			}
@@ -32,7 +32,7 @@ export function createSketch(width, height, enableSeperation, enableAlignment, e
 			}
 		};
 	};
-}
+};
 
 class Boid {
 	constructor(x, y, p5, enableSeperation, enableAlignment, enableCoheseion) {

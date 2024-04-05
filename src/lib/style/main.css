@@ -19,3 +19,23 @@ body {
 h1 {
 	font-size: 92px;
 }
+
+.hljs {
+	background: #f0f0f0f0 !important;
+	border-radius: 6px;
+}
+
+.inline-code {
+	background: #f0f0f0f0 !important;
+	border-radius: 6px;
+	padding: 4px;
+}
+
+a {
+	color: var(--dark-blue);
+	transition: 100ms color;
+}
+
+a:hover {
+	color: var(--blue);
+}

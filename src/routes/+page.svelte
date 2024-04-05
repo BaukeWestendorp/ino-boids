@@ -1,6 +1,8 @@
 <script>
 	import imgMarley from '$lib/img/marley.png';
 	import Boids from './Boids.svelte';
+	import CodeBlock from './CodeBlock.svelte';
+	import Sketch from './Sketch.svelte';
 
 	let page;
 	$: pageWidth = page?.getBoundingClientRect().width ?? 0;
@@ -35,9 +37,24 @@
 	<section>
 		<h2>Marley in code</h2>
 		<p>
-			Om Marley te simuleren moeten we eerst bedenken hoe we haar in code kunnen representeren. Dit
-			doen we doormiddel van een <code>class</code>.
+			Om Marley te simuleren moeten we eerst bedenken hoe we haar in code kunnen representeren.
+			Hiervoor hebben we eerst een plek nodig om haar in te plaatsen.
+			<br />
+			Ik heb er voor gekozen om de <a href="https://p5js.org">p5js</a> library te gebruiken. Dit is
+			een toegankelijke <i>Creative Coding</i> library.
+			<br />
+			Om een lege sketch met een lichtblauwe achtergrond te maken kun je de volgende code gebruiken.
 		</p>
+		<CodeBlock code="p5jsInitial" />
+		<p>
+			Vervolgens moeten we beschrijven wat een boid is. In JavaScript kun je hier een
+			<code class="inline-code">class</code>
+			voor gebruiken.
+			<br />
+			De in de <code class="inline-code">constructor</code> zetten we de code die de Boid initialiseerd.
+		</p>
+		<CodeBlock code="boidClass1" />
+		<Sketch width={pageWidth} height={400} sketchName="empty" />
 	</section>
 
 	<!-- <section id="marley-en-haar-vriendjes">
@@ -99,7 +116,6 @@
 	section {
 		display: flex;
 		flex-direction: column;
-		align-items: center;
 		gap: 1rem;
 
 		margin-bottom: 2rem;
@@ -111,6 +127,7 @@
 
 	#ontmoet-marley .marley {
 		width: 20rem;
+		margin: 0 auto;
 	}
 
 	h2 {
