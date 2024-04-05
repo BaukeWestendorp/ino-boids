@@ -31,6 +31,12 @@ code.inline {
 	color: #d73a49;
 }
 
+td:first-child code {
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
 a {
 	color: var(--dark-blue);
 	transition: 100ms color;

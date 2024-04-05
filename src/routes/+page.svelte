@@ -1,6 +1,6 @@
 <script>
 	import imgMarley from '$lib/img/marley.png';
-	import Boids from './Boids.svelte';
+	import imgSeparation from '$lib/img/separation.png';
 	import CodeBlock from './CodeBlock.svelte';
 	import Sketch from './Sketch.svelte';
 
@@ -12,9 +12,9 @@
 	<section>
 		<h2 id="introductie">Introductie</h2>
 		<p>
-			Het Boids-algoritme, bedacht door Craig Reynolds in 1987, is een simulatie van hoe vogels,
+			Het boids-algoritme, bedacht door Craig Reynolds in 1987, is een simulatie van hoe vogels,
 			vissen en insecten in groepen bewegen. Het werkt met drie simpele regels: blijf uit de buurt
-			van anderen (<i>Seperation</i>), volg de richting van je buren (<i>Alignment</i>) en blijf bij
+			van anderen (<i>Separation</i>), volg de richting van je buren (<i>Alignment</i>) en blijf bij
 			de groep (<i>Cohesion</i>). Als je deze regels volgt, kun je een zwerm simuleren die er net zo
 			uitziet als echte dieren. Mensen gebruiken dit algoritme om games, animatiefilms en zelfs
 			verkeerssimulaties realistischer te maken.
@@ -134,6 +134,37 @@
 		/>
 		<Sketch width={pageWidth} height={400} sketchName="betterBoidDraw" />
 	</section>
+
+	<section?>
+		<h2>Separation</h2>
+		<p>
+			Dit ziet er al leuk uit, maar de boids vliegen de hele tijd tegen elkaar aan. Hier kunnen we
+			ook iets aan doen.
+			<br />
+			Dit is waar het echte boids-algoritme begint: De <i>Separation</i> stap. Hier berekenen we de richting
+			waar de boid heen moet gaan om weg te gaan van de rest van de boids in de buurt. Hieronder is een
+			diagram. De dikke pijl wijst de richting aan waar de boid naartoe moet om weg te gaan.
+		</p>
+		<img src={imgSeparation} alt="Separation" />
+		<CodeBlock
+			code="boidSeparation"
+			highlightedLines={[
+				5, 6, 21, 22, 23, 24, 27, 28, 29, 30, 31, 32, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44,
+				45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67,
+				68, 69, 70, 71, 72, 73, 74, 75, 76, 78, 79, 80
+			]}
+		/>
+		<p>
+			Wow! Dat is heel veel code, maar niet schrikken. Het valt mee. Eerst maken we een nieuwe
+			<code class="inline">flock</code> functie. Hier berekenen we het algoritme.
+			<br />In de <code class="inline">separate</code> functie gaan we iedere andere boid bij langs.
+			Als de afstand tot die andere boid groter is dan de gegeven afstand (hier 25px), berekenen we de
+			vector die weg wijst van de boid ernaast. Van al die vectoren voor alle boids in de buurt, nemen
+			we het gemiddelde. Dit is de richting die we op moeten om weg te gaan van alle boids in de buurt,
+			en niet tegen ze aan te vliegen.
+		</p>
+		<Sketch width={pageWidth} height={400} sketchName="separation" />
+	</section>
 </article>
 
 <style>
@@ -151,6 +182,11 @@
 
 	#ontmoet-marley .marley {
 		width: 20rem;
+		margin: 0 auto;
+	}
+
+	img {
+		width: 30%;
 		margin: 0 auto;
 	}
 
