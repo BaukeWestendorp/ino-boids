@@ -20,7 +20,9 @@ export function createSketch(width, height, enableSeperation, enableAlignment, e
 				flock.push(boid);
 			}
 
-			flock[0].highlight = true;
+			// We geven de laatste flock een andere kleur, zodat er altijd eentje te vinden is.
+			// We nemen de laatste zodat deze altijd te zien is boven alle andere boids.
+			flock[flock.length - 1].highlight = true;
 		};
 
 		p5.draw = () => {
@@ -68,11 +70,11 @@ class Boid {
 
 		if (this.enableSeperation) seperation.mult(3.0);
 		if (this.enableAlignment) alignment.mult(1.0);
-		if (this.enableCoheseionn) cohesion.mult(1.0);
+		if (this.enableCoheseion) cohesion.mult(1.0);
 
 		if (this.enableSeperation) this.applyForce(seperation);
 		if (this.enableAlignment) this.applyForce(alignment);
-		if (this.enableCoheseionn) this.applyForce(cohesion);
+		if (this.enableCoheseion) this.applyForce(cohesion);
 	}
 
 	update() {
@@ -95,8 +97,13 @@ class Boid {
 	render(p5) {
 		// Draw a triangle rotated in the direction of velocity
 		const theta = this.velocity.heading() + p5.radians(90);
-		p5.fill('#5eb9e3');
-		p5.stroke('#196b91');
+		if (this.highlight) {
+			p5.fill('#e35e5e');
+			p5.stroke('#911919');
+		} else {
+			p5.fill('#5eb9e3');
+			p5.stroke('#196b91');
+		}
 		p5.push();
 		p5.translate(this.position.x, this.position.y);
 		p5.rotate(theta);
