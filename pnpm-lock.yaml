@@ -1,5 +1,10 @@
 lockfileVersion: '6.0'
 
+dependencies:
+  p5-svelte:
+    specifier: ^3.1.2
+    version: 3.1.2(@types/p5@1.7.6)(p5@1.9.2)
+
 devDependencies:
   '@sveltejs/adapter-auto':
     specifier: ^3.0.0
@@ -13,6 +18,15 @@ devDependencies:
   '@sveltejs/vite-plugin-svelte':
     specifier: ^3.0.0
     version: 3.0.0(svelte@4.2.7)(vite@5.0.11)
+  p5:
+    specifier: ^1.9.2
+    version: 1.9.2
+  prettier:
+    specifier: ^3.2.5
+    version: 3.2.5
+  prettier-plugin-svelte:
+    specifier: ^3.2.2
+    version: 3.2.2(prettier@3.2.5)(svelte@4.2.7)
   publint:
     specifier: ^0.1.9
     version: 0.1.9
@@ -519,6 +533,10 @@ packages:
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
     dev: true
 
+  /@types/p5@1.7.6:
+    resolution: {integrity: sha512-6pLTOo0V3N5jZb5nTwjiv3lPHLK3Z/TjbhQUj8CTWXocUk1Z/f6OHTp3Pcwi1BhWnf5gqKUcyEb1gP0KIJuQgw==}
+    dev: false
+
   /@types/pug@2.0.10:
     resolution: {integrity: sha512-Sk/uYFOBAB7mb74XcpizmH0KOR2Pv3D2Hmrh1Dmy5BmK3MpdSa5kqZcg6EKBdklU0bFXX9gCfzvpnyUehrPIuA==}
     dev: true
@@ -980,6 +998,19 @@ packages:
       wrappy: 1.0.2
     dev: true
 
+  /p5-svelte@3.1.2(@types/p5@1.7.6)(p5@1.9.2):
+    resolution: {integrity: sha512-lcfWh+cJ1/wRdIXHnjpYmDgj2h3TCy1QJVQnf/cBcFWS8CSkvyAN5F8u8H2U8qBUtZ4XaD3nd+1NoYUMHaMExQ==}
+    peerDependencies:
+      '@types/p5': ^1.4.2
+      p5: ^1.4.0
+    dependencies:
+      '@types/p5': 1.7.6
+      p5: 1.9.2
+    dev: false
+
+  /p5@1.9.2:
+    resolution: {integrity: sha512-fV8Td9Q1qlYXRXPLNrclRsgzXxPp/EuDlJUteV1XEtsy0JwjjCVteCrv7TTCU71BSoEtmuQ/51BIVRUJi/0gEw==}
+
   /parent-module@1.0.1:
     resolution: {integrity: sha512-GQ2EWRpQV8/o+Aw8YqtfZZPfNRWZYkbidE9k5rpl/hC3vtHHBfGm2Ifi6qWV+coDGkrUKZAxE3Lot5kcsRlh+g==}
     engines: {node: '>=6'}
@@ -1023,6 +1054,22 @@ packages:
       nanoid: 3.3.7
       picocolors: 1.0.0
       source-map-js: 1.2.0
+    dev: true
+
+  /prettier-plugin-svelte@3.2.2(prettier@3.2.5)(svelte@4.2.7):
+    resolution: {integrity: sha512-ZzzE/wMuf48/1+Lf2Ffko0uDa6pyCfgHV6+uAhtg2U0AAXGrhCSW88vEJNAkAxW5qyrFY1y1zZ4J8TgHrjW++Q==}
+    peerDependencies:
+      prettier: ^3.0.0
+      svelte: ^3.2.0 || ^4.0.0-next.0 || ^5.0.0-next.0
+    dependencies:
+      prettier: 3.2.5
+      svelte: 4.2.7
+    dev: true
+
+  /prettier@3.2.5:
+    resolution: {integrity: sha512-3/GWa9aOC0YeD7LUfvOG2NiDyhOWRvt1k+rcKhOuYnMY24iiCphgneUfJDyFXd6rZCAnuLBv6UeAULtrhT/F4A==}
+    engines: {node: '>=14'}
+    hasBin: true
     dev: true
 
   /publint@0.1.9:
