@@ -26,7 +26,7 @@
 			threshold: 0.0
 		};
 
-		let observer = new IntersectionObserver((entries, observer) => {
+		let observer = new IntersectionObserver((entries) => {
 			running = entries[0].isIntersecting;
 		}, intersectionOptions);
 

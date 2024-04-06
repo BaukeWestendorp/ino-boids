@@ -1,0 +1,94 @@
+.marley-marker {
+	width: 0;
+	height: 0;
+}
+
+#marley {
+	position: fixed;
+	top: 10%;
+	left: -50rem;
+
+	transition: 1.5s;
+
+	z-index: 10;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+}
+
+#marley .bird {
+	width: 20rem;
+}
+
+#marley .text {
+	width: 100%;
+	position: relative;
+	margin-bottom: 13rem;
+	margin-left: 12rem;
+}
+
+#marley p {
+	width: 70%;
+	position: absolute;
+	top: 3rem;
+	left: 4rem;
+	font-weight: 600;
+}
+
+#marley .speechbubble {
+	position: absolute;
+	width: 20rem;
+}
+
+#marley.marley-fly-left {
+	animation: flying 3s ease-in-out infinite alternate;
+	left: 1rem;
+}
+
+#marley.marley-fly-right {
+	animation: flying 3s ease-in-out infinite alternate;
+	left: calc(100vw - 27rem);
+}
+
+#marley.marley-text-hello p::before {
+	content: 'Hey! Ik ben Marley! Ga jij mij helpen met vliegen in een zwerm? Ik heb een beetje last van faalangst...';
+}
+
+#marley.marley-text-empty-sketch p::before {
+	content: 'Nou, dat is nog een hele lege lucht. Kunnen we daar niet iets aan doen?';
+}
+
+#marley.marley-text-movement p::before {
+	content: 'Kijk! Nu zijn er al vogels, maar ze bewegen nog niet... Kun jij dat oplossen?';
+}
+
+#marley.marley-text-border p::before {
+	content: 'Gaaf! Ze vliegen nu alleen wel van het scherm af. Kunnen ze niet aan de andere kant er weer op komen?';
+}
+
+#marley.marley-text-looking-good p::before {
+	content: 'Wow! Dat ziet er al een stuk beter uit. Nu moeten we ze alleen nog laten bewegen als vogels. Daar had jij iets voor toch?';
+}
+
+#marley.marley-text-separation p::before {
+	content: 'Top! Dat scheelt. Geen botsingen meer! Dat is erg fijn, maar ik wil nu eigenlijk ook wel samen gaan vliegen met andere vogels.';
+}
+
+#marley.marley-text-alignment p::before {
+	content: 'Yes! Er is nu alleen nog 1 klein probleempje. Soms raak ik de groep kwijt als ik aan de rand vlieg. Kun je me misschien bij de groep houden?';
+}
+
+#marley.marley-text-cohesion p::before {
+	content: 'Held! Nu kan ik eindelijk vliegen zoals alle andere vogels. Heel erg bedankt vriend!';
+}
+
+@keyframes flying {
+	0% {
+		transform: translate(-1rem, -1rem) rotate(5deg);
+	}
+	100% {
+		transform: translate(1rem, 1rem) rotate(-5deg);
+	}
+}

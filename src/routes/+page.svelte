@@ -1,17 +1,69 @@
 <script>
 	import imgMarley from '$lib/img/marley.png';
+	import imgSpeechbubble from '$lib/img/speechbubble.png';
 	import imgSeparation from '$lib/img/separation.png';
 	import imgAlignment from '$lib/img/alignment.png';
 	import imgCohesion from '$lib/img/cohesion.png';
 
 	import CodeBlock from './CodeBlock.svelte';
 	import Sketch from './Sketch.svelte';
+	import { onMount } from 'svelte';
+
+	import '$lib/style/marley.css';
 
 	let page;
+	let marley;
 	$: pageWidth = page?.getBoundingClientRect().width ?? 0;
+
+	onMount(() => {
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					const textClassName = [...entry.target.classList].find((c) =>
+						c.startsWith('marley-text')
+					);
+					if (textClassName) {
+						if (entry.isIntersecting) marley.classList.add(textClassName);
+						else marley.classList.remove(textClassName);
+					}
+
+					if (entry.isIntersecting) {
+						if (entry.target.classList.contains('marley-fly-left')) {
+							marley.classList.add('marley-fly-left');
+						} else if (entry.target.classList.contains('marley-fly-right')) {
+							marley.classList.add('marley-fly-right');
+						}
+					} else {
+						if (entry.target.classList.contains('marley-fly-left')) {
+							marley.classList.remove('marley-fly-left');
+						} else if (entry.target.classList.contains('marley-fly-right')) {
+							marley.classList.remove('marley-fly-right');
+						}
+					}
+				});
+			},
+			{
+				root: null,
+				rootMargin: '0px',
+				threshold: 0.5
+			}
+		);
+
+		const marleyMarkers = document.getElementsByClassName('marley-marker');
+		for (const element of marleyMarkers) {
+			observer.observe(element);
+		}
+	});
 </script>
 
 <article bind:this={page}>
+	<div bind:this={marley} id="marley">
+		<div class="text">
+			<img src={imgSpeechbubble} alt="Speechbubble" class="speechbubble" />
+			<p></p>
+		</div>
+		<img class="bird" src={imgMarley} alt="Marley de spreeuw" />
+	</div>
 	<section>
 		<h2 id="introductie">Introductie</h2>
 		<p>
@@ -27,7 +79,6 @@
 
 	<section id="ontmoet-marley">
 		<h2>Ontmoet Marley</h2>
-		<img class="marley" src={imgMarley} alt="Marley de spreeuw" />
 		<p>
 			Dit is Marley de spreeuw. Spreeuwen vliegen vaak in grote zwermen, net zoals dit algoritme kan
 			simuleren! Marley gaat je op weg helpen om te snappen hoe je dit algoritme kunt implementeren
@@ -47,6 +98,8 @@
 			Om een lege sketch met een lichtblauwe achtergrond te maken kun je de volgende code gebruiken.
 		</p>
 		<CodeBlock code="p5jsInitial" />
+		<div class="marley-marker marley-fly-left"></div>
+		<div class="marley-marker marley-text-hello"></div>
 		<p>Dit geeft het volgende resultaat.</p>
 		<Sketch width={pageWidth} height={400} sketchName="empty" />
 		<p>Best saai nog...</p>
@@ -61,6 +114,8 @@
 		</p>
 		<CodeBlock code="boidClass1" />
 		<p>Nu moeten we een aantal boids maken. Laten we beginnen met 100 boids in de lucht.</p>
+		<div class="marley-marker marley-fly-right"></div>
+		<div class="marley-marker marley-text-empty-sketch"></div>
 		<CodeBlock code="addBoids" highlightedLines={[0, 1, 8, 9, 10, 11, 12, 13, 14]} />
 		<p>
 			Op dit moment bestaan de boids wel, maar laten we ze nog niet zien op het scherm. Daar gaan we
@@ -87,6 +142,8 @@
 
 	<section>
 		<h2>Beweging</h2>
+		<div class="marley-marker marley-fly-left"></div>
+		<div class="marley-marker marley-text-movement"></div>
 		<p>
 			Om de Marley te laten bewegen hebben we wat meer code nodig. Eerst moet ze weten welke
 			richting ze op moet. Dit doen we met een vector. Een vector is eigenlijk heel simpel. Het
@@ -114,6 +171,8 @@
 			We zitten alleen nog met een probleem. Als ze weg gaan van het scherm komen ze nooit meer terug.
 			Hier kunnen we ook wat aan doen.
 		</p>
+		<div class="marley-marker marley-fly-right"></div>
+		<div class="marley-marker marley-text-border"></div>
 		<CodeBlock
 			code="borderWrap"
 			highlightedLines={[7, 8, 18, 19, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]}
@@ -135,6 +194,8 @@
 			code="betterBoidDraw"
 			highlightedLines={[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]}
 		/>
+		<div class="marley-marker marley-fly-left"></div>
+		<div class="marley-marker marley-text-looking-good"></div>
 		<Sketch width={pageWidth} height={400} sketchName="betterBoidDraw" />
 	</section>
 
@@ -166,6 +227,8 @@
 			we het gemiddelde. Dit is de richting die we op moeten om weg te gaan van alle boids in de buurt,
 			en niet tegen ze aan te vliegen.
 		</p>
+		<div class="marley-marker marley-fly-right"></div>
+		<div class="marley-marker marley-text-separation"></div>
 		<Sketch width={pageWidth} height={400} sketchName="separation" />
 	</section>
 
@@ -191,6 +254,8 @@
 		</p>
 		<Sketch width={pageWidth} height={400} sketchName="alignment" />
 		<p>Zoals je kunt zien, vliegen ze nu samen!</p>
+		<div class="marley-marker marley-fly-left"></div>
+		<div class="marley-marker marley-text-alignment"></div>
 	</section>
 
 	<section>
@@ -212,6 +277,8 @@
 			]}
 		/>
 		<Sketch width={pageWidth} height={400} sketchName="cohesion" />
+		<div class="marley-marker marley-fly-right"></div>
+		<div class="marley-marker marley-text-cohesion"></div>
 		<p>Nu vliegen ze echt in zwermen!</p>
 	</section>
 </article>
@@ -229,12 +296,7 @@
 		margin-bottom: 0;
 	}
 
-	#ontmoet-marley .marley {
-		width: 20rem;
-		margin: 0 auto;
-	}
-
-	img {
+	section img {
 		width: 30%;
 		margin: 0 auto;
 	}
