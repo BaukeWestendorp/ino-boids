@@ -3,6 +3,11 @@
 	height: 0;
 }
 
+section .marley-marker {
+	/* This is to compensate for the flex gap in sections */
+	margin-top: -1rem;
+}
+
 #marley {
 	position: fixed;
 	top: 10%;
