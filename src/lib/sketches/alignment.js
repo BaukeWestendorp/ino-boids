@@ -108,7 +108,7 @@ class Boid {
 
 	separate(boids) {
 		// Dit is de afstand die we het liefst hebben van een andere boid.
-		const desiredSeperation = 25.0;
+		const desiredSeperation = 20.0;
 
 		let steer = this.p5.createVector(0, 0);
 		let count = 0;
@@ -148,7 +148,7 @@ class Boid {
 	}
 
 	align(boids) {
-		const neighbourDistance = 50.0;
+		const neighbourDistance = 25.0;
 		let totalVelocity = this.p5.createVector(0, 0);
 		let count = 0;
 

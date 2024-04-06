@@ -11,8 +11,7 @@ class Boid {
     }
 
     align(boids) {
-        // Dis is de maximale afstand die we van onze buren willen hebben.
-        // We willen niet te ver van ze weg vliegen.
+        // Dis is de maximale afstand die we checken voor onze buren.
         const neighbourDistance = 50.0;
 
         let totalVelocity = createVector(0, 0);

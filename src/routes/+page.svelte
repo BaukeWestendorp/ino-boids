@@ -2,6 +2,8 @@
 	import imgMarley from '$lib/img/marley.png';
 	import imgSeparation from '$lib/img/separation.png';
 	import imgAlignment from '$lib/img/alignment.png';
+	import imgCohesion from '$lib/img/cohesion.png';
+
 	import CodeBlock from './CodeBlock.svelte';
 	import Sketch from './Sketch.svelte';
 
@@ -159,7 +161,7 @@
 			Wow! Dat is heel veel code, maar niet schrikken. Het valt mee. Eerst maken we een nieuwe
 			<code class="inline">flock</code> functie. Hier berekenen we het algoritme.
 			<br />In de <code class="inline">separate</code> functie gaan we iedere andere boid bij langs.
-			Als de afstand tot die andere boid groter is dan de gegeven afstand (hier 25px), berekenen we de
+			Als de afstand tot die andere boid groter is dan de gegeven afstand (hier 12px), berekenen we de
 			vector die weg wijst van de boid ernaast. Van al die vectoren voor alle boids in de buurt, nemen
 			we het gemiddelde. Dit is de richting die we op moeten om weg te gaan van alle boids in de buurt,
 			en niet tegen ze aan te vliegen.
@@ -178,17 +180,39 @@
 			code="boidAlignment"
 			highlightedLines={[
 				5, 6, 9, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32,
-				33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45
+				33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44
 			]}
 		/>
 		<p>
-			In de alignment stap kijken we naar alle boids in de buurt van deze boid. In dit geval 50px.
+			In de alignment stap kijken we naar alle boids in de buurt van deze boid. In dit geval 25px.
 			Vervolgens nemen we het gemiddelde van alle richtingen van deze buurboids. Hiermee berekenen
 			we de stuurkracht nodig om te compenseren voor de huidige richting. Die compensatie voegen we
 			uiteindelijk op bij onze acceleratie.
 		</p>
 		<Sketch width={pageWidth} height={400} sketchName="alignment" />
 		<p>Zoals je kunt zien, vliegen ze nu samen!</p>
+	</section>
+
+	<section>
+		<h2>Cohesion</h2>
+		<p>
+			Het lijkt nu al ergens op! We hebben nu nog 1 probleem. De vogels vliegen wel dezelfde kant
+			op, maar als er eentje uit de groep raakt vliegt deze weer alleen.
+			<br />
+			Hiervoor hebben we de laatste stap. <i>Cohesion</i>. Deze stap zorgt er voor dat boids altijd
+			naar het midden van de zwerm om ze heen willen vliegen.
+		</p>
+		<img src={imgCohesion} alt="Cohesion" />
+		<CodeBlock
+			code="boidCohesion"
+			highlightedLines={[
+				8, 9, 11, 12, 16, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36,
+				37, 38, 39, 40, 41, 42, 43, 44, 45, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60,
+				61, 62
+			]}
+		/>
+		<Sketch width={pageWidth} height={400} sketchName="cohesion" />
+		<p>Nu vliegen ze echt in zwermen!</p>
 	</section>
 </article>
 
