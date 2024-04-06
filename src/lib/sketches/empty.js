@@ -1,4 +1,4 @@
-export default (width, height, options) => {
+export default (width, height, isRunning, options) => {
 	return (p5) => {
 		p5.setup = () => {
 			p5.createCanvas(width, height);

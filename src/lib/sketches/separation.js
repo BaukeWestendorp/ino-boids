@@ -1,7 +1,7 @@
 // Maak een lege lijst met boids.
 let boids = [];
 
-export default (width, height, options) => {
+export default (width, height, isRunning, options) => {
 	return (p5) => {
 		p5.setup = () => {
 			// Geef aan dat je een canvas van 400px bij 600px wilt gebruiken.
@@ -19,6 +19,8 @@ export default (width, height, options) => {
 		p5.draw = () => {
 			// Maak de achtergrond lightblauw.
 			p5.background('#c5eef5');
+
+			if (!isRunning()) return;
 
 			// Voor iedere boid in de `boids` array:
 			for (let i = 0; i < boids.length; i++) {

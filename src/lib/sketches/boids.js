@@ -1,4 +1,4 @@
-export default (width, height, options) => {
+export default (width, height, isRunning, options) => {
 	return (p5) => {
 		// Eerst maken we een lege lijst met alle vogels (ookwel boids in het algoritme).
 		const flock = [];
@@ -27,6 +27,7 @@ export default (width, height, options) => {
 
 		p5.draw = () => {
 			p5.background('#c5eef5');
+			if (!isRunning()) return;
 			for (let i = 0; i < flock.length; i++) {
 				flock[i].run(flock, p5);
 			}
