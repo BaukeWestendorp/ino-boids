@@ -1,6 +1,7 @@
 <script>
 	import imgMarley from '$lib/img/marley.png';
 	import imgSeparation from '$lib/img/separation.png';
+	import imgAlignment from '$lib/img/alignment.png';
 	import CodeBlock from './CodeBlock.svelte';
 	import Sketch from './Sketch.svelte';
 
@@ -135,7 +136,7 @@
 		<Sketch width={pageWidth} height={400} sketchName="betterBoidDraw" />
 	</section>
 
-	<section?>
+	<section>
 		<h2>Separation</h2>
 		<p>
 			Dit ziet er al leuk uit, maar de boids vliegen de hele tijd tegen elkaar aan. Hier kunnen we
@@ -164,6 +165,30 @@
 			en niet tegen ze aan te vliegen.
 		</p>
 		<Sketch width={pageWidth} height={400} sketchName="separation" />
+	</section>
+
+	<section>
+		<h2>Alignment</h2>
+		<p>
+			De volgende stap is er voor zorgen dat de boids dezelfde kant op willen vliegen als hun buren.
+			dit is de <i>Alignment</i> stap.
+		</p>
+		<img src={imgAlignment} alt="Alignment" />
+		<CodeBlock
+			code="boidAlignment"
+			highlightedLines={[
+				5, 6, 9, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32,
+				33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45
+			]}
+		/>
+		<p>
+			In de alignment stap kijken we naar alle boids in de buurt van deze boid. In dit geval 50px.
+			Vervolgens nemen we het gemiddelde van alle richtingen van deze buurboids. Hiermee berekenen
+			we de stuurkracht nodig om te compenseren voor de huidige richting. Die compensatie voegen we
+			uiteindelijk op bij onze acceleratie.
+		</p>
+		<Sketch width={pageWidth} height={400} sketchName="alignment" />
+		<p>Zoals je kunt zien, vliegen ze nu samen!</p>
 	</section>
 </article>
 
