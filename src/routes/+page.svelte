@@ -282,7 +282,11 @@
 		<Sketch width={pageWidth} height={400} sketchName="cohesion" />
 		<div class="marley-marker marley-fly-right"></div>
 		<div class="marley-marker marley-text-cohesion"></div>
-		<p>Nu vliegen ze echt in zwermen!</p>
+		<p>
+			Nu vliegen ze echt in zwermen! Er zijn nog veel mogelijkheden die je nu zelf zou kunnen
+			toevoegen. Een paar voorbeelden zijn bijvoorbeeld nieuwe boids toevoegen bij je muis, de boids
+			'bang' maken voor je muis, etc. Laat de wereld zien wat je allemaal kunt!
+		</p>
 	</section>
 </article>
 
