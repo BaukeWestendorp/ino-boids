@@ -32,6 +32,12 @@ export default (width, height, isRunning, options) => {
 				flock[i].run(flock, p5);
 			}
 		};
+
+		p5.mouseDragged = () => {
+			flock.push(
+				new Boid(p5.mouseX, p5.mouseY, p5, options.separation, options.alignment, options.cohesion)
+			);
+		};
 	};
 };
 

@@ -84,6 +84,8 @@
 			simuleren! Marley gaat je op weg helpen om te snappen hoe je dit algoritme kunt implementeren
 			in JavaScript.
 		</p>
+		<div class="marley-marker marley-fly-left"></div>
+		<div class="marley-marker marley-text-hello"></div>
 	</section>
 
 	<section>
@@ -98,8 +100,6 @@
 			Om een lege sketch met een lichtblauwe achtergrond te maken kun je de volgende code gebruiken.
 		</p>
 		<CodeBlock code="p5jsInitial" />
-		<div class="marley-marker marley-fly-left"></div>
-		<div class="marley-marker marley-text-hello"></div>
 		<p>Dit geeft het volgende resultaat.</p>
 		<Sketch width={pageWidth} height={400} sketchName="empty" />
 		<p>Best saai nog...</p>

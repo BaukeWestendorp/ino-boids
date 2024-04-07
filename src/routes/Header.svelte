@@ -13,6 +13,7 @@
 <header bind:this={header}>
 	<div class="overlay title">
 		<h1>Boids</h1>
+		<p>Sleep met je muis over de lucht om meer vogels toe te voegen!</p>
 	</div>
 
 	<div class="overlay scroll">
@@ -43,8 +44,15 @@
 
 	.overlay.title {
 		display: flex;
+		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+		gap: 1rem;
+	}
+
+	.overlay.title p {
+		color: var(--blue);
+		font-size: 22px;
 	}
 
 	.overlay.scroll .arrow {
