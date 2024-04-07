@@ -1,6 +1,7 @@
 <script>
 	import '$lib/style/main.css';
 	import Header from './Header.svelte';
+	import Footer from './Footer.svelte';
 
 	import 'svelte-highlight/styles/github.css';
 </script>
@@ -9,6 +10,7 @@
 <main>
 	<slot />
 </main>
+<Footer />
 
 <style>
 	main {

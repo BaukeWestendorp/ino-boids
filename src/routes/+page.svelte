@@ -73,6 +73,9 @@
 			de groep (<i>Cohesion</i>). Als je deze regels volgt, kun je een zwerm simuleren die er net zo
 			uitziet als echte dieren. Mensen gebruiken dit algoritme om games, animatiefilms en zelfs
 			verkeerssimulaties realistischer te maken.
+			<br />
+			Als je meer wilt weten over hoe je een interactieve website zoals deze maakt, bekijk de
+			<a href="https://github.com/BaukeWestendorp/ino-boids">GitHub pagina </a>.
 		</p>
 		<p>In dit artiekel ga ik er vanuit dat je al enige kennis hebt over JavaScript.</p>
 	</section>
